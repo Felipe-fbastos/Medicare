@@ -16,6 +16,6 @@ public class Laboratorio {
     @Column(name = "NMLABORATORIO")
     private String nome;
 
-    @OneToMany(mappedBy = "idLaboratorio")
+    @OneToMany(mappedBy = "laboratorio")
     private List<Remedio> remedio;
 }

@@ -21,9 +21,8 @@ public class Utilizador
     @JoinColumn(name = "IDTIPOUTILIZADOR")
     private TipoUtilizador tipoUtilizador;
 
-    @OneToMany(mappedBy = "IDUTILIZADOR")
+    @OneToMany(mappedBy = "utilizador")
     private List<Posologia> posologias;
-
 
     @Column(name = "NMUTILIZADOR")
     private String nome;
@@ -40,8 +39,18 @@ public class Utilizador
     @Column(name = "TELUTILIZADOR")
     private String telefone;
 
-    @OneToMany(mappedBy = "IDCOLABORADOR")
+    @OneToMany(mappedBy = "colaborador")
     private List<Promocao> promocoes;
+
+    @OneToMany(mappedBy = "colaborador")
+    private List<ParceirosUtilizadores> colaborador;
+
+    //Se der errp foi aqui
+    @OneToMany(mappedBy = "cuidador")
+    private List<Cuidador> cuidador;
+
+    @OneToMany(mappedBy = "responsavel")
+    private List<Responsavel> responsavel;
 
     public int getId() {
         return id;

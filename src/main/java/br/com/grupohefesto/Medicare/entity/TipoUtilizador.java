@@ -22,7 +22,7 @@ public class TipoUtilizador
     private String descricao;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "TIPOUTILIZADOR")
+    @OneToMany(mappedBy = "tipoUtilizador")
     private List<Utilizador> Utilizadores;
 
 }

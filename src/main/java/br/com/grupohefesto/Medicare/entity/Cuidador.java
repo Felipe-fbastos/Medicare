@@ -13,15 +13,20 @@ import java.time.LocalDateTime;
 @Table(name = "UTILIZADORES_CUIDADOR")
 public class Cuidador
 {
-    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDCUIDADOR")
-    private int id;
+
+    @EmbeddedId
+    private RelCuidadorUtilizadorID id;
 
     //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
-    @Id
     @ManyToOne
+    @MapsId("cuidadorID")
+    @JoinColumn(name = "CUIDADORID")
+    private int cuidador;
+
+    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
+
+    @ManyToOne
+    @MapsId("pacienteCuidadorId")
     @JoinColumn(name = "IDUTILIZADOR")
     private Utilizador utilizador;
 
@@ -41,23 +46,4 @@ public class Cuidador
     private LocalDate status;
 
 
-
-
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Utilizador getUtilizador() {
-        return utilizador;
-    }
-
-    public void setUtilizador(Utilizador utilizador) {
-        this.utilizador = utilizador;
-    }
 }

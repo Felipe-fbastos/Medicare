@@ -16,7 +16,7 @@ public class TipoOrdemGrandeza {
     @Column(name = "DSGRANDEZA")
     private String descricao;
 
-    @OneToMany(mappedBy = "IDGRANDEZA")
+    @OneToMany(mappedBy = "tipoOrdemGrandeza")
     private List<Remedio> remedio;
 
 }

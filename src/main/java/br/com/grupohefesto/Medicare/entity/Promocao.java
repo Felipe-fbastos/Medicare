@@ -13,18 +13,20 @@ public class Promocao {
     @Column(name = "IDPROMOCOES")
     private int id;
 
-    private int idFormaPagamento;
+    @ManyToOne
+    @JoinColumn(name = "IDFORMADEPAGAMENTO")
+    private int formaPagamento;
 
     @ManyToOne
     @JoinColumn(name = "IDCOLABORADOR")
-    private Utilizador idColaborador;
+    private Utilizador colaborador;
 
     @Column(name = "DSPROMOCAO")
     private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "IDREMEDIO")
-    private Remedio idRemedio;
+    private Remedio remedio;
 
     @Column(name = "DTINICIO")
     private LocalDateTime dataInicio;

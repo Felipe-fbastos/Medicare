@@ -15,7 +15,7 @@ public class GrauParentesco {
     @Column(name = "DSGRAUPARENTESCO")
     private int descricao;
 
-    @OneToMany(mappedBy = "GRAUPARENTESCO")
+    @OneToMany(mappedBy = "parentesco")
     private List<Responsavel> Reponsavel;
 
     public int getId() {

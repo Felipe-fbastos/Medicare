@@ -1,4 +1,4 @@
-package br.com.grupohefesto.Medicare.controller;
+/*package br.com.grupohefesto.Medicare.controller;
 
 
 import br.com.grupohefesto.Medicare.entity.Cuidador;
@@ -52,3 +52,4 @@ public class CuidadorController
         }
     }
 }
+*/

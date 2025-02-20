@@ -6,14 +6,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "FORMAS_PAGAMENTO")
-public class Forma_Pagamento {
+public class FormaPagamento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="IDFORMADEPAGAMENTO")
     private int id;
 
-    @OneToMany(mappedBy = "IDFORMADEPAGAMENTO")
+    @OneToMany(mappedBy = "formaPagamento")
     private List<Promocao> promocoes;
 
     @Column(name = "DSFORMADEPAGAMENTO")

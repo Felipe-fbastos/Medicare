@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.swing.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Remedio
 
     @ManyToOne
     @JoinColumn(name = "IDLABORATORIO")
-    private Laboratorio idLaboratorio;
+    private Laboratorio laboratorio;
 
     @Column(name="NMREMEDIO")
     private String nome; //Nome mínimo de 3 caracteres
@@ -45,74 +46,16 @@ public class Remedio
     @Column(name = "QTDALERTA")
     private int quantidadeAlerta;
 
-    @OneToMany(mappedBy = "IDREMEDIO")
+    @OneToMany(mappedBy = "remedio")
     private List<Alarme> alarmes;
 
-    @OneToMany(mappedBy = "IDREMEDIO")
+    @OneToMany(mappedBy = "remedio")
     private List<Promocao> promocoes;
 
+    @OneToMany(mappedBy = "remedio")
+    private List<Posologia> posologias;
 
-    public int getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "remedio")
+    private List<HistoricoPosologia> historicoPosologias;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getAnotação() {
-        return anotação;
-    }
-
-    public void setAnotação(String anotação) {
-        this.anotação = anotação;
-    }
-
-    public int getDosagem() {
-        return dosagem;
-    }
-
-    public void setDosagem(int dosagem) {
-        this.dosagem = dosagem;
-    }
-
-    public String getNmlaboratorio() {
-        return nmlaboratorio;
-    }
-
-    public void setNmlaboratorio(String nmlaboratorio) {
-        this.nmlaboratorio = nmlaboratorio;
-    }
-
-    public LocalDateTime getDtRegistroRemedio() {
-        return dtRegistroRemedio;
-    }
-
-    public void setDtRegistroRemedio(LocalDateTime dtRegistroRemedio) {
-        this.dtRegistroRemedio = dtRegistroRemedio;
-    }
-
-    public int getQuantidadeAlerta() {
-        return quantidadeAlerta;
-    }
-
-    public void setQuantidadeAlerta(int quantidadeAlerta) {
-        this.quantidadeAlerta = quantidadeAlerta;
-    }
-
-    public Laboratorio getIdLaboratorio() {
-        return idLaboratorio;
-    }
-
-    public void setIdLaboratorio(Laboratorio idLaboratorio) {
-        this.idLaboratorio = idLaboratorio;
-    }
 }

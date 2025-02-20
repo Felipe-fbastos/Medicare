@@ -9,21 +9,24 @@ import java.util.List;
 @Table(name = "POSOLOGIA")
 public class Posologia {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDPOSOLOGIA")
-    private int id;
+    //É o IdPosologia, não s esqueça
+    @EmbeddedId
+    private RelPosologiaRemedioID id;
 
-    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
+    @ManyToOne
+    @MapsId("remedioId")
     @JoinColumn(name = "IDREMEDIO")
-    private Remedio idRemedio;
+    private Remedio remedio;
 
     @ManyToOne
     @JoinColumn(name = "UTILIZADOR")
-    private Utilizador idUtilizador;
+    private Utilizador utilizador;
 
-    @OneToMany(mappedBy = "IDPOSOLOGIA")
+    @OneToMany(mappedBy = "posologia")
     private List<Alarme> alarmes;
+
+    @OneToMany(mappedBy = "posologia")
+    private List<HistoricoPosologia> historicoPosologias;
 
     @Column(name = "DIPOSOLOGIA")
     private LocalDateTime dtInicio;

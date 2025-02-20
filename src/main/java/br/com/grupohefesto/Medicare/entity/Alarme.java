@@ -15,11 +15,11 @@ public class Alarme {
 
     @ManyToOne
     @JoinColumn(name = "IDPOSOLOGIA")
-    private Posologia idPosologia;
+    private Posologia posologia;
 
     @ManyToOne
     @JoinColumn(name = "IDREMEDIO")
-    private Remedio idRemedio;
+    private Remedio remedio;
 
     @Column(name = "DTHORAALARME")
     private LocalDateTime dtHoraALarme;
