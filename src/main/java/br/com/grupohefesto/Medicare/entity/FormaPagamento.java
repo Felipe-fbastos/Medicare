@@ -1,9 +1,13 @@
 package br.com.grupohefesto.Medicare.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "FORMAS_PAGAMENTO")
 public class FormaPagamento {

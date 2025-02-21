@@ -1,32 +1,20 @@
 package br.com.grupohefesto.Medicare.entity;
 
 import jakarta.persistence.Embeddable;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @Embeddable
 public class RelPosologiaRemedioID implements Serializable {
     private Integer poslogiaId;  // Responsável
     private Integer remedioId;   // Paciente
 
-    // Getters, Setters, Equals & HashCode
 
-    public Integer getposlogiaId() {
-        return poslogiaId;
-    }
-
-    public void setposlogiaId(Integer poslogiaId) {
-        this.poslogiaId = poslogiaId;
-    }
-
-    public Integer getremedioId() {
-        return remedioId;
-    }
-
-    public void setremedioId(Integer remedioId) {
-        this.remedioId = remedioId;
-    }
-
+    //Equals & HashCode
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,8 +1,13 @@
 package br.com.grupohefesto.Medicare.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "GRAUPARENTESCO")
 public class GrauParentesco {
@@ -18,19 +23,5 @@ public class GrauParentesco {
     @OneToMany(mappedBy = "parentesco")
     private List<Responsavel> Reponsavel;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(int descricao) {
-        this.descricao = descricao;
-    }
 }

@@ -1,10 +1,14 @@
 package br.com.grupohefesto.Medicare.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "PARCEIROS")
 public class Parceiro {
@@ -27,27 +31,5 @@ public class Parceiro {
     private List<ParceirosUtilizadores> parceirosUtilizadores;
 
 
-    public String getNome() {
-        return nome;
-    }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getApelido() {
-        return apelido;
-    }
-
-    public void setApelido(String apelido) {
-        this.apelido = apelido;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
 }

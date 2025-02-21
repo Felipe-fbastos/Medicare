@@ -1,0 +1,4 @@
+1. Eu dei uma pesquisada e vi que na maioria tem q fzr a repository,
+mas nn necessáriamente a service e a controller.
+2. Coloquei a anotação getter e setter do lombok em tds as entity's
+-isa
