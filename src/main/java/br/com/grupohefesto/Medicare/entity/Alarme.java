@@ -14,18 +14,16 @@ public class Alarme {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "IDPOSOLOGIA")
+    @JoinColumns({
+            @JoinColumn(name = "IDPOSLOGIA", referencedColumnName = "IDPOSOLOGIA", insertable = false, updatable = false),
+            @JoinColumn(name = "IDREMEDIO", referencedColumnName = "IDREMEDIO", insertable = false, updatable = false)
+    })
     private Posologia posologia;
-
-    @ManyToOne
-    @JoinColumn(name = "IDREMEDIO")
-    private Remedio remedio;
 
     @Column(name = "DTHORAALARME")
     private LocalDateTime dtHoraALarme;
 
     @Column(name = "STALARME")
     private String status;
-
-
 }
+

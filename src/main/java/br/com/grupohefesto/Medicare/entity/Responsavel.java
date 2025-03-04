@@ -1,44 +1,42 @@
-package br.com.grupohefesto.Medicare.entity;
+    package br.com.grupohefesto.Medicare.entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+    import jakarta.persistence.*;
+    import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
+    import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "RESPONSAVEL")
-public class Responsavel {
+    @Entity
+    @Table(name = "RESPONSAVEL")
+    public class Responsavel {
 
-    @EmbeddedId
-    private RelResponsavelUtilizadorID id;
+        @EmbeddedId
+        private RelResponsavelUtilizadorID id;
 
-    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
+        //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
 
-    @ManyToOne
-    @MapsId("pacienteId")
-    @Column(name = "IDUTILIZADOR")
-    private int utilizador;
+        @ManyToOne
+        @MapsId("pacienteId")
+        private Utilizador utilizador;
 
-    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
-    @ManyToOne
-    @MapsId("responsavelId")
-    @Column(name = "IDRESPONSAVEL")
-    private int responsavel;
+        //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
+        @ManyToOne
+        @MapsId("responsavelId")
+        private Utilizador responsavel;
 
-    @ManyToOne
-    @JoinColumn(name = "IDGRAUPARENTESCO")
-    private GrauParentesco parentesco;
+        @ManyToOne
+        @JoinColumn(name = "IDGRAUPARENTESCO")
+        private GrauParentesco parentesco;
 
-    @NotNull
-    @Column(name = "DCRESPONSAVEL")
-    private LocalDateTime dtCadastro;
+        @NotNull
+        @Column(name = "DCRESPONSAVEL")
+        private LocalDateTime dtCadastro;
 
-    @NotNull
-    @Column(name = "DURESPONSAVEL")
-    private LocalDateTime dtUltimaAtualizacao;
+        @NotNull
+        @Column(name = "DURESPONSAVEL")
+        private LocalDateTime dtUltimaAtualizacao;
 
-    @NotNull
-    @Column(name = "STRESPONSAVEL")
-    private String status;
+        @NotNull
+        @Column(name = "STRESPONSAVEL")
+        private String status;
 
-}
+    }

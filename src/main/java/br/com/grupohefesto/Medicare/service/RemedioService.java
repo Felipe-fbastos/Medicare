@@ -1,7 +1,9 @@
-/*
+
 package br.com.grupohefesto.Medicare.service;
 
 import br.com.grupohefesto.Medicare.entity.Remedio;
+import br.com.grupohefesto.Medicare.entity.Utilizador;
+import br.com.grupohefesto.Medicare.exceptions.IdFoundException;
 import br.com.grupohefesto.Medicare.repository.RemedioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,91 +17,65 @@ public class RemedioService {
   private RemedioRepository repository;
 
   //Listar remedios
-  public List<Remedio> listar() {
+  public List<Remedio> getAll() {
     return repository.findAll();
   }
 
   //Buscar por Id
-  public Remedio buscarPorId(int id) {
-    var existe = repository.findById(id);
-    if (existe.isPresent())
-      return existe.get();
-    return null;
+  public Remedio getId(int id) {
+
+    return repository.findById(id)
+            .orElseThrow(() -> new IdFoundException("Remedio não cadastrado", id));
+
   }
 
   //Cadastrar Remedio
-  public Remedio cadastrar(Remedio remedio) {
+  public Remedio singUp(Remedio remedio) {
 
-    var existeRemedio = repository.findById(remedio.getId());
-    if (existeRemedio != null)  {
-      System.out.println("Remédio já cadastrado"); //Posteriormente, alterar os SOUTs por exceções, para poderem ser exibidar na tela.
-      return null;
-    } else
-      if (remedio.getVldRemedio().isBefore(LocalDateTime.now())) {
-        System.out.println("Remédio está vencido");  //Posteriormente, alterar os SOUTs por exceções, para poderem ser exibidar na tela.
-        return null;
-      }
-      else if (remedio.getVldRemedio() == LocalDateTime.now()) {
-        System.out.println("Remédio prestes à vencer"); //Posteriormente, alterar os SOUTs por exceções, para poderem ser exibidar na tela.
-        return null;
-      }
-      else if (remedio.getQtdRemedio() == 0)
-      {
-        System.out.println("Quantidade de medicamento não pode ser 0"); //Posteriormente, alterar os SOUTs por exceções, para poderem ser exibidar na tela.
-        return null;
-      }
-      else if(remedio.getNome().length() < 3)
-      {
-        System.out.println("Nome inválido"); //Posteriormente, alterar os SOUTs por exceções, para poderem ser exibidar na tela.
-        return null;
-      }
       return repository.save(remedio);
   }
 
   //Alterar remedio
-  public Remedio alterar(Remedio remedio) {
-    var existe = buscarPorId(remedio.getId());
-    if (existe != null)
-      return repository.save(remedio);
-    else {
-      System.out.println("Remedio não encontrado"); //Posteriormente, alterar os SOUTs por exceções, para poderem ser exibidar na tela.
-      return null;
-    }
+  public Remedio update(int id, String novoNome, int novaDosagem, String novaAnotacao, int novaQuantidadeAlerta) {
+
+
+      Remedio remedioExistente = repository.findById(id)
+              .orElseThrow(() -> new IdFoundException("Remédio não cadastrado", id));
+
+      if (novoNome != null && !novoNome.isEmpty()) {
+          // Atualiza o nome do remédio
+          remedioExistente.setNome(novoNome);
+      }
+
+      if (novaDosagem > 0) {
+          // Atualiza a dosagem do remédio
+          remedioExistente.setDosagem(novaDosagem);
+      }
+
+      if (novaAnotacao != null && !novaAnotacao.isEmpty()) {
+          // Atualiza a anotação do remédio
+          remedioExistente.setAnotacao(novaAnotacao);
+      }
+
+      if (novaQuantidadeAlerta > 0) {
+          // Atualiza a quantidade de alerta do remédio
+          remedioExistente.setQuantidadeAlerta(novaQuantidadeAlerta);
+      }
+
+
+      return repository.save(remedioExistente);
+
+
+
   }
 
   //Deletar Remedio
   public void excluir(int id)
   {
-    var existe = buscarPorId(id);
-    if(existe != null)
-      repository.deleteById(id);
+    repository.findById(id).orElseThrow(() -> new IdFoundException("ID", id));
+
+    repository.deleteById(id);
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
-*/

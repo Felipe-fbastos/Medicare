@@ -3,7 +3,6 @@ package br.com.grupohefesto.Medicare.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import org.springframework.data.annotation.Id;
 
 import java.util.List;
 

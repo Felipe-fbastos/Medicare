@@ -18,11 +18,11 @@ public class Cuidador
     @EmbeddedId
     private RelCuidadorUtilizadorID id;
 
-    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
+    //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabelax
     @ManyToOne
-    @MapsId("cuidadorID")
+    @MapsId("cuidadorId")
     @JoinColumn(name = "CUIDADORID")
-    private int cuidador;
+    private Utilizador cuidador;
 
     //Pesquisar como fazer relacionamento quando a chave é PK e FK na tabela
 
@@ -47,5 +47,67 @@ public class Cuidador
     @Column(name = "STCUIDADOR")
     private LocalDate status;
 
+    public RelCuidadorUtilizadorID getId() {
+        return id;
+    }
 
+    public void setId(RelCuidadorUtilizadorID id) {
+        this.id = id;
+    }
+
+    public Utilizador getCuidador() {
+        return cuidador;
+    }
+
+    public void setCuidador(Utilizador cuidador) {
+        this.cuidador = cuidador;
+    }
+
+    public Utilizador getUtilizador() {
+        return utilizador;
+    }
+
+    public void setUtilizador(Utilizador utilizador) {
+        this.utilizador = utilizador;
+    }
+
+    public LocalDate getDtInicio() {
+        return dtInicio;
+    }
+
+    public void setDtInicio(LocalDate dtInicio) {
+        this.dtInicio = dtInicio;
+    }
+
+    public LocalDate getDtFim() {
+        return dtFim;
+    }
+
+    public void setDtFim(LocalDate dtFim) {
+        this.dtFim = dtFim;
+    }
+
+    public LocalDate getDtCadastro() {
+        return dtCadastro;
+    }
+
+    public void setDtCadastro(LocalDate dtCadastro) {
+        this.dtCadastro = dtCadastro;
+    }
+
+    public LocalDate getDtUltimaAtualizacao() {
+        return dtUltimaAtualizacao;
+    }
+
+    public void setDtUltimaAtualizacao(LocalDate dtUltimaAtualizacao) {
+        this.dtUltimaAtualizacao = dtUltimaAtualizacao;
+    }
+
+    public LocalDate getStatus() {
+        return status;
+    }
+
+    public void setStatus(LocalDate status) {
+        this.status = status;
+    }
 }

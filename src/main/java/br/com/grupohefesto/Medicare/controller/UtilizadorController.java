@@ -1,8 +1,11 @@
 package br.com.grupohefesto.Medicare.controller;
 
 import br.com.grupohefesto.Medicare.entity.Utilizador;
+import br.com.grupohefesto.Medicare.exceptions.EmailJaCadastrado;
+import br.com.grupohefesto.Medicare.exceptions.IdFoundException;
 import br.com.grupohefesto.Medicare.service.UtilizadorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,31 +24,40 @@ public class UtilizadorController
     }
 
     @GetMapping("/{id")
-    public Utilizador buscarPorId(@PathVariable("id") int id)
+    public ResponseEntity<?> buscarPorId(@PathVariable("id") int id)
     {
-        return service.buscarPorId(id);
+        try {
+            return ResponseEntity.ok().body(service.getId(id));
+        }
+        catch (IdFoundException e){
+            return ResponseEntity.badRequest().body(e);
+        }
     }
 
-    @PostMapping
-    public Utilizador cadastrar(@RequestBody Utilizador utilizador)
+    @PostMapping("/sinUp")
+    public ResponseEntity<?> singUp(@RequestBody Utilizador utilizador)
     {
-        return service.cadastrar(utilizador);
+        try{
+            return ResponseEntity.ok().body(service.singUp(utilizador));
+        } catch (EmailJaCadastrado e) {
+            return ResponseEntity.badRequest().body(e);
+        }
     }
 
     @PutMapping("/{id}")
-    public Utilizador alterar (@RequestBody Utilizador utilizador,
+    public ResponseEntity<?> update (@RequestBody Utilizador utilizador,
                                @PathVariable ("id") int id)
     {
-        if (id == utilizador.getId())
-            return service.alterar(utilizador);
-        else return null;
+        try {
+            return ResponseEntity.ok().body(service.update(utilizador,id));
+        } catch (EmailJaCadastrado e) {
+            return ResponseEntity.badRequest().body(e);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e);
+        }
     }
 
-    @DeleteMapping("/{id}")
-    public void excluir (@PathVariable ("id") int id)
-    {
-        service.excluir(id);
-    }
+
 
 
 }

@@ -18,6 +18,6 @@ public class ParceirosUtilizadores {
 
     @ManyToOne
     @JoinColumn(name = "IDCOLABORADOR")
-    private int colaborador;
+    private Utilizador colaborador;
 
 }

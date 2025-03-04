@@ -26,13 +26,13 @@ public class Remedio
     @JoinColumn(name = "IDLABORATORIO")
     private Laboratorio laboratorio;
 
-    @Size(min = 3, max = 20, message = "Nome do medicamento inválido")
+    @Size(min = 3, max = 35, message = "Nome do medicamento inválido")
     @Column(name="NMREMEDIO")
     private String nome; //Nome mínimo de 3 caracteres
 
     @NotEmpty(message = "A anotação não pode estar vazia")
     @Column(name="NTREMEDIO")
-    private String anotação; //Anotação de um Remédio: Para dor, gripe, etc.
+    private String anotacao; //Anotação de um Remédio: Para dor, gripe, etc.
 
     @ManyToOne
     @JoinColumn(name = "IDGRANDEZA")
@@ -65,7 +65,6 @@ public class Remedio
 
     @JsonIgnore
     @OneToMany(mappedBy = "remedio")
-    private List<HistoricoPosologia> historicoPosologias;
 
     public int getId() {
         return id;
@@ -91,12 +90,12 @@ public class Remedio
         this.nome = nome;
     }
 
-    public String getAnotação() {
-        return anotação;
+    public String getAnotacao() {
+        return anotacao;
     }
 
-    public void setAnotação(String anotação) {
-        this.anotação = anotação;
+    public void setAnotacao(String anotacao) {
+        this.anotacao = anotacao;
     }
 
     public TipoOrdemGrandeza getTipoOrdemGrandeza() {
@@ -153,13 +152,5 @@ public class Remedio
 
     public void setPosologias(List<Posologia> posologias) {
         this.posologias = posologias;
-    }
-
-    public List<HistoricoPosologia> getHistoricoPosologias() {
-        return historicoPosologias;
-    }
-
-    public void setHistoricoPosologias(List<HistoricoPosologia> historicoPosologias) {
-        this.historicoPosologias = historicoPosologias;
     }
 }

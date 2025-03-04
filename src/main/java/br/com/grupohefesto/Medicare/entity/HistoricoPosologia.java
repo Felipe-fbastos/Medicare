@@ -12,13 +12,14 @@ public class HistoricoPosologia {
 
         @ManyToOne
         @MapsId("poslogiaId")
-        @JoinColumn(name = "IDPOSLOGIA")
+        @JoinColumn(name = "IDPOSLOGIA", referencedColumnName = "IDPOSOLOGIA", insertable = false, updatable = false)  // Ordem correta
         private Posologia posologia;
 
         @ManyToOne
         @MapsId("remedioId")
-        @JoinColumn(name = "IDREMEDIO")
+        @JoinColumn(name = "IDREMEDIO", referencedColumnName = "IDREMEDIO", insertable = false, updatable = false)  // Ordem correta
         private Remedio remedio;
+
 
         @Column(name = "SDPOSOLOGIA")
         private int saldoRemedio;

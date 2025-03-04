@@ -23,12 +23,10 @@ public class Utilizador
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-
     @NotNull
     @ManyToOne
     @JoinColumn(name = "IDTIPOUTILIZADOR")
     private TipoUtilizador tipoUtilizador;
-
 
     @OneToMany(mappedBy = "utilizador")
     private List<Posologia> posologias;
@@ -94,20 +92,36 @@ public class Utilizador
         this.tipoUtilizador = tipoUtilizador;
     }
 
-    public String getNomeUtilizador() {
+    public List<Posologia> getPosologias() {
+        return posologias;
+    }
+
+    public void setPosologias(List<Posologia> posologias) {
+        this.posologias = posologias;
+    }
+
+    public String getNome() {
         return nome;
     }
 
-    public void setNomeUtilizador(String nomeUtilizador) {
-        this.nome = nomeUtilizador;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCNPJ_CPF() {
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
+    }
+
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCNPJ_CPF(String CNPJ_CPF) {
-        this.CPF = CNPJ_CPF;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     public String getEmail() {
@@ -126,4 +140,35 @@ public class Utilizador
         this.telefone = telefone;
     }
 
+    public List<Promocao> getPromocoes() {
+        return promocoes;
+    }
+
+    public void setPromocoes(List<Promocao> promocoes) {
+        this.promocoes = promocoes;
+    }
+
+    public List<ParceirosUtilizadores> getColaborador() {
+        return colaborador;
+    }
+
+    public void setColaborador(List<ParceirosUtilizadores> colaborador) {
+        this.colaborador = colaborador;
+    }
+
+    public List<Cuidador> getCuidador() {
+        return cuidador;
+    }
+
+    public void setCuidador(List<Cuidador> cuidador) {
+        this.cuidador = cuidador;
+    }
+
+    public List<Responsavel> getResponsavel() {
+        return responsavel;
+    }
+
+    public void setResponsavel(List<Responsavel> responsavel) {
+        this.responsavel = responsavel;
+    }
 }

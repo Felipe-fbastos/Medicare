@@ -1,13 +1,26 @@
 package br.com.grupohefesto.Medicare.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
 
 @Embeddable
 public class RelPosologiaRemedioID implements Serializable {
-    private Integer poslogiaId;  // Responsável
-    private Integer remedioId;   // Paciente
+
+    @Column(name = "IDPOSLOGIA")
+    private Integer poslogiaId;
+
+    @Column(name = "IDREMEDIO")
+    private Integer remedioId;
+
+    public RelPosologiaRemedioID(Integer poslogiaId, Integer remedioId) {
+        this.poslogiaId = poslogiaId;
+        this.remedioId = remedioId;
+    }
+
+    public RelPosologiaRemedioID() {
+    }
 
     // Getters, Setters, Equals & HashCode
 

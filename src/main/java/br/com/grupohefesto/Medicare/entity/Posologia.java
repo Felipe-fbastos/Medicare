@@ -13,9 +13,13 @@ public class Posologia {
     @EmbeddedId
     private RelPosologiaRemedioID id;
 
+    // Relacionamento com Remedio usando a chave composta
     @ManyToOne
-    @MapsId("remedioId")
-    @JoinColumn(name = "IDREMEDIO")
+    @MapsId("remedioId")  // Mapeia o campo 'remedioId' da chave composta
+    @JoinColumns({
+            @JoinColumn(name = "IDPOSOLOGIA", referencedColumnName = "IDPOSOLOGIA", insertable = false, updatable = false),
+            @JoinColumn(name = "IDREMEDIO", referencedColumnName = "IDREMEDIO", insertable = false, updatable = false)
+    })
     private Remedio remedio;
 
     @ManyToOne

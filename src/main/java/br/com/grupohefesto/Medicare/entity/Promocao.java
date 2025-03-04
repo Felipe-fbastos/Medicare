@@ -17,7 +17,7 @@ public class Promocao {
 
     @ManyToOne
     @JoinColumn(name = "IDFORMADEPAGAMENTO")
-    private int formaPagamento;
+    private FormaPagamento formaPagamento;
 
     @ManyToOne
     @JoinColumn(name = "IDCOLABORADOR")

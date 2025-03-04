@@ -1,3 +1,4 @@
+/*
 package br.com.grupohefesto.Medicare.controller;
 
 import br.com.grupohefesto.Medicare.entity.TipoUtilizador;
@@ -28,3 +29,4 @@ public class TiposUtilizadorController
         return service.buscarPorId(id);
     }
 }
+*/
